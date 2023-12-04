@@ -25,11 +25,18 @@ const FormDetails = () => {
     setSnackbarOpen(false);
   };
 
-  const handleResponse = (response) => {
-    // Handle response action here (for example, sending a response to the server)
-    setSnackbarOpen(true); // Show the Snackbar when response action is triggered
+  const handleResponse = async (userResponse) => {
+    try {
+      // Send the user's response to the backend route
+     await axios.post(`http://localhost:3001/api/contact/response-user/${id}`, { response: userResponse });
+      
+      // Show the Snackbar when response is successfully recorded
+      setSnackbarOpen(true);
+    } catch (error) {
+      console.error('Error sending user response:', error);
+    }
   };
-
+  
   return (
     <Box mt={3} justifyContent={'center'} alignContent={'center'} m={'auto'}>
       <Typography variant="h4" mb={2}>Form Details</Typography>

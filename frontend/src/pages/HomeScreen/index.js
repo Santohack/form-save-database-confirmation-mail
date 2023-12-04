@@ -58,8 +58,8 @@ const HomeScreen = () => {
       };
 
       const response = await axios.post('http://localhost:3001/api/contact', formData);
-      setSuccessMessage(`Form data submitted successfully! Form details: ${response.data.formLink}`);
-      // setSuccessMessage('Form data submitted successfully!');
+      // setSuccessMessage(`Form data submitted successfully! Form details: ${response.data.formLink}`);
+      setSuccessMessage('Form data submitted successfully!');
       setOpenSnackbar(true);
       console.log('Form Data Sent:', response.data);
       setUserName('');

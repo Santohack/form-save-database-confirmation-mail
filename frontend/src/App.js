@@ -4,6 +4,7 @@ import Container from '@mui/material/Container'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import './App.css';
 import FormDetails from './pages/Verification/FormDetails ';
+import OfferDetails from './pages/Offer';
 function App() {
   return (
     <>
@@ -18,6 +19,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomeScreen />} />
    <Route path ="/form/:id" element={<FormDetails />} />
+   <Route path ="/formResponse/:id" element={<OfferDetails />} />
     </Routes>
    </Router>
      
