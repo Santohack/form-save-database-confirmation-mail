@@ -1,0 +1,12 @@
+/* app.css */
+
+/* Red border for error */
+.input-error {
+  border: 1px solid red;
+}
+
+/* Red border when focused with error */
+.input-error:focus {
+  outline: none;
+  border: 1px solid red;
+}

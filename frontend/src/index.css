@@ -1,0 +1,8 @@
+.error {
+  border: 1px solid red; /* Red border for error */
+}
+
+.error:focus {
+  outline: none; /* Remove default focus outline */
+  border: 1px solid red; /* Red border when focused with error */
+}
