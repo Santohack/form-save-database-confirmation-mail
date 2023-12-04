@@ -43,8 +43,8 @@ const HomeScreen = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (userName && email  === '') {
-      setFieldError(true); // Set error if username is empty on form submission
+    if (!userName || !email) {
+      setFieldError(true); // Set error if username or email is empty on form submission
       return;
     }
 
