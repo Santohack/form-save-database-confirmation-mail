@@ -18,6 +18,7 @@ export const  FormContainer  = styled(Box)(()=>({
     alignContent: 'center',
     marginTop: '10px',
     alignItems: 'center',
+    
     justifyContent: 'center',
 }))
 

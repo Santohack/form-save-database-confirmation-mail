@@ -8,8 +8,8 @@ import OfferDetails from './pages/Offer';
 function App() {
   return (
     <>
-    <Container maxWidth="lg" sx={{
-
+    <Container maxWidth="sm" sx={{
+   minWidth:'min-content',
       display: 'flex',
       flexDirection: 'column',
      padding:'23px',
