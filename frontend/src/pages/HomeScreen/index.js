@@ -116,7 +116,7 @@ const HomeScreen = () => {
             <InputForm
               id="mobile"
               value={mobile}
-              label="Mobile"
+              label="Mobile (Optional)"
               variant="outlined"
               type={"number"}
               onChange={(e) => setMobile(e.target.value)}
@@ -132,21 +132,21 @@ const HomeScreen = () => {
             <Box>
 
 
-              <Typography variant="h6" sx={{ marginBottom: '1rem', display: 'flex', }}> Reason : </Typography>
+              <Typography variant="h6" sx={{ marginBottom: '1rem', marginTop: '1rem', display: 'flex', }}> Reason : </Typography>
               <RadioGroup
                 name="reason"
                 value={offer.reason}
                 onChange={handleInputChange}
               >
                 <FormControlLabel value="General" control={<Radio />} label="General" />
-                <FormControlLabel value="Buy Your website/Domain" control={<Radio />} label="Buy Your website/Domain" />
+                <FormControlLabel value="Buy this website/Domain" control={<Radio />} label="Buy this website/Domain" />
                 <FormControlLabel value="Complaint" control={<Radio />} label="Complaint" />
               </RadioGroup>
 
 
-              {offer.reason === 'Buy Your website/Domain' && (
+              {offer.reason === 'Buy this website/Domain' && (
                 <div>
-                  <Typography id="currency-label" variant="h6" sx={{ marginBottom: '1rem', display: 'flex', }}>  Currency: </Typography>
+                  <Typography id="currency-label" variant="h6" sx={{ marginBottom: '1rem', display: 'flex', }}>  Offer: </Typography>
                   {/* <InputLabel >Currency:</InputLabel> */}
                   <Select
                     labelId="currency-label"

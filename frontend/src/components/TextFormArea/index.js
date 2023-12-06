@@ -27,13 +27,14 @@ import { styled } from '@mui/system';
 
   const StyledTextarea = styled(BaseTextareaAutosize)(
     ({ theme }) => `
-    width: 450px;
+    width: 445px;
     font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 0.875rem;
+    font-size: 17px;
     font-weight: 400;
     line-height: 1.5;
     margin:"1px";
     padding: 18px;
+    margin-left:9px;
     margin-top: 10px;
     border-radius: 12px 12px 0 12px;
     color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
@@ -59,7 +60,7 @@ import { styled } from '@mui/system';
   );
 
   const TextFormArea = ({ ...props }) => {
-    return <StyledTextarea aria-label="custom textarea" placeholder="Messages" {...props} />;
+    return <StyledTextarea aria-label="custom textarea" placeholder="Message" {...props} />;
   };
   
   export default TextFormArea;
