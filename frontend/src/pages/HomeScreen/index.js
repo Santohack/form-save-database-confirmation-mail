@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { HomeContainer } from '../../styles/HomeScreen';
 import InputForm from '../../components/InputForm';
-import { Button, FormControl, Typography, Snackbar, FormHelperText, FormControlLabel, Radio, RadioGroup, TextField, Select, MenuItem, InputLabel, Box, Alert } from '@mui/material';
+import { Button, FormControl, Typography, Snackbar, FormControlLabel, Radio, RadioGroup, TextField, Select, MenuItem, Box, Alert } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import TextFormArea from '../../components/TextFormArea';
-import { Formik, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
 import axios from 'axios';
 
 
@@ -71,11 +69,11 @@ const HomeScreen = () => {
         currency: 'EUR',
         amount: ''
       });
-      // Optionally, reset form fields here if needed
+
 
     } catch (error) {
       console.error('Error Sending Form Data:', error);
-      // Handle error scenarios
+
     }
 
 
@@ -118,7 +116,7 @@ const HomeScreen = () => {
               value={mobile}
               label="Mobile (Optional)"
               variant="outlined"
-              type={"number"}
+              type={"tel"}
               onChange={(e) => setMobile(e.target.value)}
             />
             <TextFormArea

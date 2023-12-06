@@ -29,14 +29,14 @@ router.post('/', async (req, res) => {
 
     // Generate the form link
     const formLink = `http://localhost:3000/form/${formId}`;
-   // Email content
+    // Email content
     var mailOptions = {
       from: process.env.SMTP_MAIL,
       to: email,
       subject: 'Verification Email',
       text: `Please verify your Message\nName: ${userName}\nEmail: ${email}\nMobile: ${mobile}\nMessage: ${message}\nOffer: ${JSON.stringify(offer)}\nClick on the verification link to submit response: ${formLink}`,
     };
-// Send the email
+    // Send the email
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
         console.log(error);
@@ -106,7 +106,7 @@ router.post('/response-user/:id', async (req, res) => {
 // Route for handling user responses to offers
 router.post('/response/:id', async (req, res) => {
   try {
-    const { response } = req.body; // Assuming the response is a string ("Yes" or "No")
+    const { response } = req.body; // the response is a string ("Yes" or "No")
     const formId = req.params.id;
     const formLink = `http://localhost:3000/formResponse/${formId}`;
 

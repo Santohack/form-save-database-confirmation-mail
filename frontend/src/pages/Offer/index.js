@@ -52,14 +52,14 @@ const OfferDetails = () => {
         <Paper elevation={3} sx={{ padding: '20px' }}>
           <Grid container spacing={2}>
             <Grid item xs={12} md={12}>
-              {/* Display other form details */}
+            
            
-              {formData.offer && formData.offer.reason === 'Buy Your website/Domain' && (
+              {formData.offer && formData.offer.reason === 'Buy this website/Domain' && (
                 <div>
                   <Typography variant="subtitle1">Currency: {formData.offer.currency}</Typography>
                   <Typography variant="subtitle1">Amount: {formData.offer.amount}</Typography>
 
-                  {/* Display offer status and buttons */}
+                
                   {formData.offerStatus === 'Accepted' ? (
                     <Typography variant="subtitle1">Offer Status: Accepted</Typography>
                   ) : (
@@ -75,7 +75,7 @@ const OfferDetails = () => {
                   )}
                 </div>
               )}
-              {/* Add more details here if needed */}
+             
             </Grid>
           </Grid>
         </Paper>

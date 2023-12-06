@@ -28,15 +28,15 @@ const FormDetails = () => {
   const handleResponse = async (userResponse) => {
     try {
       // Send the user's response to the backend route
-     await axios.post(`http://localhost:3001/api/contact/response-user/${id}`, { response: userResponse });
-      
+      await axios.post(`http://localhost:3001/api/contact/response-user/${id}`, { response: userResponse });
+
       // Show the Snackbar when response is successfully recorded
       setSnackbarOpen(true);
     } catch (error) {
       console.error('Error sending user response:', error);
     }
   };
-  
+
   return (
     <Box mt={3} justifyContent={'center'} alignContent={'center'} m={'auto'}>
       <Typography variant="h4" mb={2}>Form Details</Typography>
@@ -49,16 +49,15 @@ const FormDetails = () => {
               <Typography variant="subtitle1">Mobile: {formData.mobile}</Typography>
               <Typography variant="subtitle1">Message: {formData.message}</Typography>
               <Typography variant="subtitle1">Reason: {formData.offer.reason}</Typography>
-            
+
               {formData.offer.reason === 'Buy Your website/Domain' && (
                 <div>
                   <Typography variant="subtitle1">Currency: {formData.offer.currency}</Typography>
                   <Typography variant="subtitle1">Amount: {formData.offer.amount}</Typography>
                 </div>
               )}
-              {/* Add more details here if needed */}
 
-              <div style={{ marginTop: '20px', justifyContent:'space-between',display:'flex' }}>
+              <div style={{ marginTop: '20px', justifyContent: 'space-between', display: 'flex' }}>
                 <Button variant="contained" color="success" onClick={() => handleResponse('Yes')}>Yes</Button>
                 <Button variant="contained" color="error" onClick={() => handleResponse('No')}>No</Button>
               </div>
