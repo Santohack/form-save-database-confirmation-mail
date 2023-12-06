@@ -27,9 +27,9 @@ const HomeScreen = () => {
     const { name, value } = event.target;
     setOffer({ ...offer, [name]: value });
   };
- useEffect(() => {
-   document.title = 'Contact Form';
- },[])
+  useEffect(() => {
+    document.title = 'Contact Form';
+  }, [])
   const handleUsernameChange = (e) => {
     setUserName(e.target.value);
     setFieldError(e.target.value === ''); // Set error based on username length
