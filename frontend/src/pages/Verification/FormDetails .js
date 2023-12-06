@@ -36,7 +36,7 @@ const FormDetails = () => {
       console.error('Error sending user response:', error);
     }
   };
-
+  console.log("formData verification", formData);
   return (
     <Box mt={3} justifyContent={'center'} alignContent={'center'} m={'auto'}>
       <Typography variant="h4" mb={2}>Form Details</Typography>

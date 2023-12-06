@@ -26,6 +26,7 @@ const OfferDetails = () => {
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
   };
+  console.log("formData", formData);
   const handleResponse = async (responseValue) => {
     try {
       const responseData = {
