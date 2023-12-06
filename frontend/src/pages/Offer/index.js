@@ -9,6 +9,8 @@ const OfferDetails = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [offerStatus, setOfferStatus] = useState('Pending');
   useEffect(() => {
+
+    document.title = 'Offer Details';
     const fetchFormData = async () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/${id}`);
@@ -53,7 +55,7 @@ const OfferDetails = () => {
      <Paper elevation={1} sx={{ padding: '20px', width: '23rem' }}>
      <Grid container spacing={2} width={'23rem'}>
             <Grid item xs={12} md={12}>
-              <Typography variant="h4" sx={{ textAlign: 'center' }} mb={2}>Form Details</Typography>
+              <Typography variant="h4" sx={{ textAlign: 'center' }} mb={2}>Offer Details</Typography>
               <Typography variant="subtitle1"><span style={{ fontWeight: 'bold' }}>Name: {formData.userName}</span></Typography>
               <Typography variant="subtitle1"><span style={{ fontWeight: 'bold' }}>Email: {formData.email}</span></Typography>
               <Typography variant="subtitle1"><span style={{ fontWeight: 'bold' }}>Mobile: {formData.mobile}</span></Typography>

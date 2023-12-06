@@ -9,6 +9,7 @@ const FormDetails = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   useEffect(() => {
+    document.title = 'Form Details';
     const fetchFormData = async () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/${id}`);
@@ -27,8 +28,12 @@ const FormDetails = () => {
 
   const handleResponse = async (userResponse) => {
     try {
+
+      const responseData={
+        response:userResponse
+      }
       // Send the user's response to the backend route
-      await axios.post(`${process.env.REACT_APP_API_URL}/response-user/${id}`, { response: userResponse });
+      await axios.post(`${process.env.REACT_APP_API_URL}/response-user/${id}`, responseData);
 
       // Show the Snackbar when response is successfully recorded
       setSnackbarOpen(true);

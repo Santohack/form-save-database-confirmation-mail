@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { HomeContainer } from '../../styles/HomeScreen';
 import InputForm from '../../components/InputForm';
 import { Button, FormControl, Typography, Snackbar, FormControlLabel, Radio, RadioGroup, TextField, Select, MenuItem, Box, Alert } from '@mui/material';
@@ -27,7 +27,9 @@ const HomeScreen = () => {
     const { name, value } = event.target;
     setOffer({ ...offer, [name]: value });
   };
-
+ useEffect(() => {
+   document.title = 'Contact Form';
+ },[])
   const handleUsernameChange = (e) => {
     setUserName(e.target.value);
     setFieldError(e.target.value === ''); // Set error based on username length
