@@ -11,9 +11,9 @@ const OfferDetails = () => {
   useEffect(() => {
     const fetchFormData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/api/contact/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/${id}`);
         setFormData(response.data);
-        if (response.data.offerStatus === 'Accepted') {
+        if (response.data && response.data.offerStatus === 'Accepted') {
           setOfferStatus('Accepted');
         }
       } catch (error) {
@@ -34,13 +34,13 @@ const OfferDetails = () => {
       };
 
       // Send the response form data to the backend route
-      await axios.post(`http://localhost:3001/api/contact/response/${id}`, responseData);
+      await axios.post(`${process.env.REACT_APP_API_URL}/response/${id}`, responseData);
       setSnackbarOpen(true);
       // Update the UI or perform any necessary actions upon successful response recording
-     // Update the offer status when the user accepts the offer
-     if (responseValue === 'Yes') {
-      setOfferStatus('Accepted');
-    }
+      // Update the offer status when the user accepts the offer
+      if (responseValue === 'Yes') {
+        setOfferStatus('Accepted');
+      }
     } catch (error) {
       console.error('Error sending response:', error);
     }
@@ -48,35 +48,43 @@ const OfferDetails = () => {
 
   return (
     <Box mt={3} justifyContent={'center'} alignContent={'center'} m={'auto'}>
-      <Typography variant="h4" mb={2}>Form Details</Typography>
-      {formData ? (
-        <Paper elevation={3} sx={{ padding: '20px' }}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={12}>
-            
-           
-              {formData.offer && formData.offer.reason === 'Buy this website/Domain' && (
-                <div>
-                  <Typography variant="subtitle1">Currency: {formData.offer.currency}</Typography>
-                  <Typography variant="subtitle1">Amount: {formData.offer.amount}</Typography>
 
-                
+      {formData ? (
+     <Paper elevation={1} sx={{ padding: '20px', width: '23rem' }}>
+     <Grid container spacing={2} width={'23rem'}>
+            <Grid item xs={12} md={12}>
+              <Typography variant="h4" sx={{ textAlign: 'center' }} mb={2}>Form Details</Typography>
+              <Typography variant="subtitle1"><span style={{ fontWeight: 'bold' }}>Name: {formData.userName}</span></Typography>
+              <Typography variant="subtitle1"><span style={{ fontWeight: 'bold' }}>Email: {formData.email}</span></Typography>
+              <Typography variant="subtitle1"><span style={{ fontWeight: 'bold' }}>Mobile: {formData.mobile}</span></Typography>
+              <Typography variant="subtitle1"><span style={{ fontWeight: 'bold' }}>Message: {formData.message}</span></Typography>
+              <Typography variant="subtitle1"><span style={{ fontWeight: 'bold' }}>Reason: {formData.offer.reason}</span></Typography>
+
+              {formData.offer && formData.offer.reason === 'Buy this website/Domain' && (
+               
+
+                  <><Typography variant="subtitle1"><span style={{ fontWeight: 'bold' }}>Currency: {formData.offer.currency}</span></Typography>
+                  <Typography variant="subtitle1"><span style={{ fontWeight: 'bold' }}>Amount: {formData.offer.amount}</span></Typography>
+
+
                   {formData.offerStatus === 'Accepted' ? (
-                    <Typography variant="subtitle1">Offer Status: Accepted</Typography>
+                    <Typography variant="subtitle1"><span style={{ fontWeight: 'bold' }}>Offer Status: Accepted</span></Typography>
                   ) : (
                     <>
-                      <Typography variant="subtitle1">Offer Status: {offerStatus}</Typography>
+                      <Typography variant="subtitle1"><span style={{ fontWeight: 'bold' }}>Offer Status: {offerStatus}</span></Typography>
                       {offerStatus === 'Pending' && (
-                    <>
-                      <Button variant="contained" color="success" onClick={() => handleResponse('Yes')}>Accept Offer</Button>
-                      <Button variant="contained" color="error" onClick={() => handleResponse('No')}>Reject Offer</Button>
+                         <div style={{ marginTop: '20px', justifyContent: 'center', margin: '5px', padding: '5px', display: 'flex' }}>
+                          <Button sx={{ marginRight: '30px' }} variant="contained" color="success" onClick={() => handleResponse('Yes')}>Accept Offer</Button>
+                          <Button variant="contained" color="error" onClick={() => handleResponse('No')}>Reject Offer</Button>
+                        </div>
+
+                      
+                      )}
                     </>
                   )}
-                    </>
-                  )}
-                </div>
+                </>
               )}
-             
+
             </Grid>
           </Grid>
         </Paper>
@@ -84,7 +92,7 @@ const OfferDetails = () => {
         <Typography variant="subtitle1">Loading...</Typography>
       )}
 
-<Snackbar
+      <Snackbar
         open={snackbarOpen}
         autoHideDuration={3000}
         onClose={handleSnackbarClose}

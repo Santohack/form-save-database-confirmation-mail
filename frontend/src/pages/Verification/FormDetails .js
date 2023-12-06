@@ -11,7 +11,7 @@ const FormDetails = () => {
   useEffect(() => {
     const fetchFormData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/api/contact/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/${id}`);
         setFormData(response.data);
       } catch (error) {
         console.error('Error fetching form details:', error);
@@ -28,7 +28,7 @@ const FormDetails = () => {
   const handleResponse = async (userResponse) => {
     try {
       // Send the user's response to the backend route
-      await axios.post(`http://localhost:3001/api/contact/response-user/${id}`, { response: userResponse });
+      await axios.post(`${process.env.REACT_APP_API_URL}/response-user/${id}`, { response: userResponse });
 
       // Show the Snackbar when response is successfully recorded
       setSnackbarOpen(true);
@@ -39,16 +39,19 @@ const FormDetails = () => {
   console.log("formData verification", formData);
   return (
     <Box mt={3} justifyContent={'center'} alignContent={'center'} m={'auto'}>
-      <Typography variant="h4" mb={2}>Form Details</Typography>
+     
       {formData ? (
-        <Paper elevation={3} sx={{ padding: '20px' }}>
-          <Grid container spacing={2}>
+        <Paper elevation={1} sx={{ padding: '20px',width:'23rem' }}>
+          <Grid container spacing={2} width={'23rem'}>
             <Grid item xs={12} md={12}>
-              <Typography variant="subtitle1">Name: {formData.userName}</Typography>
-              <Typography variant="subtitle1">Email: {formData.email}</Typography>
-              <Typography variant="subtitle1">Mobile: {formData.mobile}</Typography>
-              <Typography variant="subtitle1">Message: {formData.message}</Typography>
-              <Typography variant="subtitle1">Reason: {formData.offer.reason}</Typography>
+            <Typography variant="h4" mb={2} align="center">Form Details</Typography>
+             
+            <Typography variant="subtitle1"><span style={{ fontWeight: 'bold' }}>Name: {formData.userName}</span></Typography>
+
+              <Typography variant="subtitle1"><span style={{ fontWeight: 'bold' }}>Email: {formData.email}</span></Typography>
+              <Typography variant="subtitle1"><span style={{ fontWeight: 'bold' }}>Mobile: {formData.mobile}</span></Typography>
+              <Typography variant="subtitle1"><span style={{ fontWeight: 'bold' }}>Message: {formData.message}</span></Typography>
+              <Typography variant="subtitle1"><span style={{ fontWeight: 'bold' }}>Reason: {formData.offer.reason}</span></Typography>
 
               {formData.offer.reason === 'Buy Your website/Domain' && (
                 <div>
@@ -57,8 +60,8 @@ const FormDetails = () => {
                 </div>
               )}
 
-              <div style={{ marginTop: '20px', justifyContent: 'space-between', display: 'flex' }}>
-                <Button variant="contained" color="success" onClick={() => handleResponse('Yes')}>Yes</Button>
+              <div style={{ marginTop: '20px', justifyContent: 'center', margin: '5px', padding: '5px', display: 'flex' }}>
+                <Button sx={{ marginRight: '20px' }} variant="contained" color="success" onClick={() => handleResponse('Yes')}>Yes</Button>
                 <Button variant="contained" color="error" onClick={() => handleResponse('No')}>No</Button>
               </div>
             </Grid>

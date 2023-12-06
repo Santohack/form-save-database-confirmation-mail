@@ -27,6 +27,7 @@ const HomeScreen = () => {
     const { name, value } = event.target;
     setOffer({ ...offer, [name]: value });
   };
+
   const handleUsernameChange = (e) => {
     setUserName(e.target.value);
     setFieldError(e.target.value === ''); // Set error based on username length
@@ -38,6 +39,7 @@ const HomeScreen = () => {
   const handleCurrencyChange = (event) => {
     setOffer({ ...offer, currency: event.target.value });
   };
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -55,7 +57,7 @@ const HomeScreen = () => {
         offer,
       };
 
-      const response = await axios.post('http://localhost:3001/api/contact', formData);
+      const response = await axios.post(process.env.REACT_APP_API_URL, formData);
       // setSuccessMessage(`Form data submitted successfully! Form details: ${response.data.formLink}`);
       setSuccessMessage('Form data submitted successfully!');
       setOpenSnackbar(true);
