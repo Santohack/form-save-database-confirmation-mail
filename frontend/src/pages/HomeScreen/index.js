@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { HomeContainer } from '../../styles/HomeScreen';
 import InputForm from '../../components/InputForm';
@@ -6,7 +7,11 @@ import SendIcon from '@mui/icons-material/Send';
 import TextFormArea from '../../components/TextFormArea';
 import axios from 'axios';
 
-
+/**
+ * Renders the HomeScreen component.
+ *
+ * @return {JSX.Element} The rendered HomeScreen component.
+ */
 const HomeScreen = () => {
   const [userName, setUserName] = React.useState('');
   const [email, setEmail] = React.useState('');
